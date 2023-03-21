@@ -1,12 +1,10 @@
-﻿using HammermenPatterns.Bridge;
-using HammermenPatterns.Bridge.Abstractions;
+﻿using HammermenPatterns.Bridge.Abstractions;
 using HammermenPatterns.Bridge.Implementations;
 
 
-static void MakeGreatCoffee()
+static void MakeGreatDrink(IDrinkMakingMachine drinkMakingMachine)
 {
-    var coffeeMaker = new CoffeeMaker();
-    var coffeeMakerControls = new Controls(coffeeMaker);
+    var coffeeMakerControls = new Controls(drinkMakingMachine);
     
     coffeeMakerControls.TogglePower();
     
@@ -15,4 +13,6 @@ static void MakeGreatCoffee()
     
     coffeeMakerControls.MakeDrink();
 }
-MakeGreatCoffee();
+
+var coffeeMaker = new CoffeeMaker();
+MakeGreatDrink(coffeeMaker);
